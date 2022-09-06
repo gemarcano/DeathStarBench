@@ -7,8 +7,8 @@ services:
       - TLS
     entrypoint: [ "python3", "./scripts/config.py" ]
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./nginx-web-server/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/nginx-web-server/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
 
   social-graph-service:
     image: deathstarbench/social-network-microservices:latest
@@ -25,8 +25,8 @@ services:
     restart: always
     entrypoint: SocialGraphService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   social-graph-mongodb:
     image: mongo:4.4.6
@@ -39,8 +39,8 @@ services:
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   social-graph-redis:
     image: redis
@@ -53,8 +53,8 @@ services:
     restart: always
     command: /social-network-microservices/config/redis.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   home-timeline-redis:
     image: redis
@@ -67,8 +67,8 @@ services:
     restart: always
     command: /social-network-microservices/config/redis.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   compose-post-service:
     image: deathstarbench/social-network-microservices:latest
@@ -83,8 +83,8 @@ services:
         condition: service_started
     entrypoint: ComposePostService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   post-storage-service:
     image: deathstarbench/social-network-microservices:latest
@@ -101,8 +101,8 @@ services:
         condition: service_started
     entrypoint: PostStorageService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   post-storage-memcached:
     image: memcached
@@ -125,8 +125,8 @@ services:
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   user-timeline-service:
     image: deathstarbench/social-network-microservices:latest
@@ -143,8 +143,8 @@ services:
         condition: service_started
     entrypoint: UserTimelineService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   user-timeline-redis:
     image: redis
@@ -157,8 +157,8 @@ services:
     restart: always
     command: /social-network-microservices/config/redis.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   user-timeline-mongodb:
     image: mongo:4.4.6
@@ -171,8 +171,8 @@ services:
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   url-shorten-service:
     image: deathstarbench/social-network-microservices:latest
@@ -189,8 +189,8 @@ services:
       url-shorten-mongodb:
         condition: service_started
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   url-shorten-memcached:
     image: memcached
@@ -213,8 +213,8 @@ services:
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   user-service:
     image: deathstarbench/social-network-microservices:latest
@@ -231,8 +231,8 @@ services:
         condition: service_started
     entrypoint: UserService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   user-memcached:
     image: memcached
@@ -255,8 +255,8 @@ services:
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   media-service:
     image: deathstarbench/social-network-microservices:latest
@@ -273,8 +273,8 @@ services:
     restart: always
     entrypoint: MediaService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   media-memcached:
     image: memcached
@@ -297,8 +297,8 @@ services:
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   text-service:
     image: deathstarbench/social-network-microservices:latest
@@ -313,8 +313,8 @@ services:
         condition: service_started
     entrypoint: TextService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   unique-id-service:
     image: deathstarbench/social-network-microservices:latest
@@ -329,8 +329,8 @@ services:
         condition: service_started
     entrypoint: UniqueIdService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   user-mention-service:
     image: deathstarbench/social-network-microservices:latest
@@ -345,8 +345,8 @@ services:
     restart: always
     entrypoint: UserMentionService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   home-timeline-service:
     image: deathstarbench/social-network-microservices:latest
@@ -361,8 +361,8 @@ services:
     restart: always
     entrypoint: HomeTimelineService
     volumes:
-      - ./config:/social-network-microservices/config
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   nginx-thrift:
     image: yg397/openresty-thrift:xenial
@@ -376,13 +376,13 @@ services:
         condition: service_started
     restart: always
     volumes:
-      - ./nginx-web-server/lua-scripts:/usr/local/openresty/nginx/lua-scripts
-      - ./nginx-web-server/pages:/usr/local/openresty/nginx/pages
-      - ./nginx-web-server/conf/nginx-tls.conf:/usr/local/openresty/nginx/conf/nginx.conf
-      - ./nginx-web-server/jaeger-config.json:/usr/local/openresty/nginx/jaeger-config.json
-      - ./gen-lua:/gen-lua
-      - ./docker/openresty-thrift/lua-thrift:/usr/local/openresty/lualib/thrift
-      - ./keys:/keys
+      - /home/phablet/DeathStarBench/socialNetwork/nginx-web-server/lua-scripts:/usr/local/openresty/nginx/lua-scripts
+      - /home/phablet/DeathStarBench/socialNetwork/nginx-web-server/pages:/usr/local/openresty/nginx/pages
+      - /home/phablet/DeathStarBench/socialNetwork/nginx-web-server/conf/nginx-tls.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - /home/phablet/DeathStarBench/socialNetwork/nginx-web-server/jaeger-config.json:/usr/local/openresty/nginx/jaeger-config.json
+      - /home/phablet/DeathStarBench/socialNetwork/gen-lua:/gen-lua
+      - /home/phablet/DeathStarBench/socialNetwork/docker/openresty-thrift/lua-thrift:/usr/local/openresty/lualib/thrift
+      - /home/phablet/DeathStarBench/socialNetwork/keys:/keys
 
   media-frontend:
     image: yg397/media-frontend:xenial
@@ -396,8 +396,8 @@ services:
       jaeger-agent:
         condition: service_started
     volumes:
-      - ./media-frontend/lua-scripts:/usr/local/openresty/nginx/lua-scripts
-      - ./media-frontend/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - /home/phablet/DeathStarBench/socialNetwork/media-frontend/lua-scripts:/usr/local/openresty/nginx/lua-scripts
+      - /home/phablet/DeathStarBench/socialNetwork/media-frontend/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
 
   jaeger-agent:
     image: jaegertracing/all-in-one:latest
