@@ -384,7 +384,7 @@ services:
       - /home/phablet/DeathStarBench/socialNetwork/config:/social-network-microservices/config
 
   jaeger-collector:
-    image: ubuntu@sha256:50284bfb6764473bda38132c1b29b40f7c2feb61acd44e01509f0aad73177c9a
+    image: jaegertracing/jaeger-collector
     command:
       [
         "--cassandra.keyspace=jaeger_v1_dc1",
@@ -402,7 +402,7 @@ services:
       - cassandra-schema
 
   jaeger-query:
-    image: ubuntu@sha256:dc06a73b720acd14f1967d7b1b0b3c1ae52f8457f676b573852b0560ba6b3c5f
+    image: jaegertracing/jaeger-query
     command:
       ["--cassandra.keyspace=jaeger_v1_dc1", "--cassandra.servers=cassandra"]
     ports:
@@ -414,7 +414,7 @@ services:
       - cassandra-schema
 
   cassandra-schema:
-    image: ubuntu@sha256:a58d41e4440b3d4b9e198eae44e7f36196167f00db2c72d342fd568c8d17742d
+    image: gemarcano/jaeger-cassandra-schema
     deploy:
       restart_policy:
         condition: any
@@ -422,7 +422,7 @@ services:
       - cassandra
 
   cassandra:
-    image: ubuntu@sha256:d02b67f0d7424061cacf26c093face93ac020d056f82aee98d82c0e77c058567
+    image: cassandra:4.0
 
 networks:
   default:
