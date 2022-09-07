@@ -1,0 +1,3 @@
+[submodule "socialNetwork/wrk2/deps/luajit"]
+	path = socialNetwork/wrk2/deps/luajit
+	url = git@github.com:gemarcano/luajit.git
